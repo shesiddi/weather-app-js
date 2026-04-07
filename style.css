@@ -1,0 +1,236 @@
+body {
+  transition: background 0.6s ease;
+  font-family: 'Poppins', sans-serif;
+}
+html {
+  scrollbar-gutter: stable;
+}
+
+.main-container{
+   margin-top: clamp(40px, 20vh, 150px);;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.toggle-label {
+  width: 70px;
+  height: 34px;
+  background: #ddd;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s ease;
+}
+.theme-toggle input {
+  display: none;
+}
+.toggle-label .icon {
+  font-size: 14px;
+  z-index: 1;
+}
+
+.sun {
+  color: #f39c12;
+  margin-left: 6px;
+}
+
+.moon {
+  color: #ffffff;
+  margin-right: 6px;
+}
+
+.toggle-ball {
+  width: 28px;
+  height: 28px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 4px;
+  transition: transform 0.3s ease;
+}
+
+
+body.dark .toggle-label {
+  background: #4facfe;
+}
+
+body.dark .toggle-ball {
+  transform: translateX(35px);
+}
+
+body.dark {
+  background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+  background-size: 600% 600%;
+  animation: gradientMove 12s ease infinite;
+  color: white;
+}
+
+
+body.dark .card {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+body.dark input {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+body.dark input.form-control {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+}
+body.dark input.form-control:focus {
+  background-color: rgba(255, 255, 255, 0.05) ;
+  color: white ;
+  border-color: #4facfe;
+  box-shadow: 0 0 8px rgba(79, 172, 254, 0.5);
+  outline: none;
+}
+body.dark input.form-control:-webkit-autofill,
+body.dark input.form-control:-webkit-autofill:hover,
+body.dark input.form-control:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px rgba(20, 20, 20, 1) inset;
+  -webkit-text-fill-color: white;
+  transition: background-color 5000s ease-in-out 0s;
+}
+body.dark input.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 1 ;
+}
+
+body.dark input.form-control::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark input.form-control:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.7) ;
+}
+
+body.dark input:focus {
+  outline: none;
+  border: 1px solid #4facfe;
+  box-shadow: 0 0 8px rgba(79, 172, 254, 0.5);
+}
+
+/* Specific to dark mode media query */
+@media (prefers-color-scheme: dark) {
+  body.dark .card input, textarea {
+    color: white; /* Text user types */
+  }
+  ::placeholder {
+    color: #888; /* Visible placeholder */
+  }
+}
+h1{
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  border: none;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 12px rgba(79, 172, 254, 0.7);
+}
+.data-card p {
+ padding-bottom: 0;
+ margin-bottom: 5px;
+ font-size: 16px;
+}
+
+#weatherCard {
+  transition: all 0.4s ease;
+}
+/*loader css*/
+.loader {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-top: 5px solid #00c6ff;
+  border-right: 5px solid #0072ff;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.loader.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.card {
+   background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+#weatherCard {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+#weatherCard.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chart-container {
+  position: relative;
+  height: 250px; /* FIXES SIZE BUG */
+  width: 100%;
+}
+
+#detailsSection {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+}
+
+#viewMoreBtn {
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+body:not(.dark) #viewMoreBtn {
+  border: 1px solid #333;
+  color: #333;
+}
+
+#viewMoreBtn:hover {
+  background: rgba(79, 172, 254, 0.2);
+  border-color: #4facfe;
+  color: #4facfe;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
